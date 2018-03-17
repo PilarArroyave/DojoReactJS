@@ -34,7 +34,7 @@ class App extends Component {
     })
 
     if(parejaSeleccionada.length === 2){
-      this.compararPareja(pareja)
+      this.compararPareja(parejaSeleccionada)
     }
   }
 
@@ -76,10 +76,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Header numeroDeIntentos = {this.state.numeroDeIntentos} 
-      resetearPartida = {}     
-      </div>
-      
+        <Header 
+          numeroDeIntentos = {this.state.numeroDeIntentos} 
+          resetearPartida = {()=>this.resetearPartida()}  
+        /> 
+        <Tablero
+          baraja = {this.state.baraja}
+          parejaSeleccionada = {this.state.parejaSeleccionada}  
+          seleccionarCarta = {(carta)=>this.seleccionarCarta(carta)}
+        />
+      </div>      
     );
   }
 }
